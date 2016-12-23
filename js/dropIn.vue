@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     btDropin() {
-      var braintree2 = require('../src/bt-web/braintree-2.30.0.min.js');
+      var braintree2 = require('../js/bt-web-v2/braintree-2.30.0.min.js');
       console.log('Braintree Drop-in UI using v2');
       braintree2.setup(this.clientToken, 'dropin', {
         container: 'payment-form'
