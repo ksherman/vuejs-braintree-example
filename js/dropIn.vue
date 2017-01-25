@@ -4,7 +4,7 @@
       <h2>Drop-in UI</h2>
       <div id="payment-form"></div>
 
-      <label>How much monies?</label>
+      <label>How many monies?</label>
       <input type="text" name="checkoutValue" class="hosted-field" placeholder="$10">
 
       <button class="" type="submit" value="SEND THE MONIES" style="padding-top: 1rem;">SEND THE MONIES</button>
