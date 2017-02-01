@@ -19,8 +19,8 @@ Currently, I have:
 - [x] Re-write more of the braintree.setup() code to be more Vue-comonent-like.
 - [x] I'd like the Hosted Fields v3 .vue component to be distributable and more flexible.
 - [x] Add PayPal checkout
-- [] Add Data collector
-- [] Planning to incorporate a read-made AJAX call for the form submission.
-- [] I'm up for suggestions! Create an issue on the repo.
+- [ ] Add Data collector
+- [ ] Planning to incorporate a read-made AJAX call for the form submission.
+- [ ] I'm up for suggestions! Create an issue on the repo.
 
 Disclaimer: I work at Braintree as an Overnight Technical Support rep, but this is _not_ an official library or example integration. https://developers.braintreepayments.com/
