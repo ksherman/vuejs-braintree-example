@@ -47,7 +47,8 @@ export default {
           amount: '',
           merchantAccountId: 'whildcaught',
           paymentMethodNonce: '',
-          paymentMethodToken: ''
+          paymentMethodToken: '',
+          paypal: ''
         }
       }
 
@@ -74,6 +75,7 @@ h1, h2 {
 
 button, input[type="submit"] {
   background-color: #FF6B00;
+  display: inline-block;
   border: none;
   padding: 1rem 1.5rem;
   margin: 1px;
@@ -89,5 +91,11 @@ button[type="submit"] {
 
 button[type="submit"]:disabled {
   background-color: #E6E6E6;
+}
+
+.line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 </style>
