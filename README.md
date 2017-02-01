@@ -13,11 +13,13 @@ Currently, I have:
 
 **Note:** Because the npm repo library for Braintree's JavaScript SDK has the same name for v2 and v3, but v3 doesn't currently include a Drop-in, I have included a local copy of JS v2.30 to require into the library. This isn't ideal, but functional for now.
 
-![Example](http://i.giphy.com/26FLa32g5mYDgy8Ew.gif)
+![Example](http://i.giphy.com/26gsuClD4ydcWd7os.gif)
 
 ### To Do:
 - [x] Re-write more of the braintree.setup() code to be more Vue-comonent-like.
 - [x] I'd like the Hosted Fields v3 .vue component to be distributable and more flexible.
+- [x] Add PayPal checkout
+- [] Add Data collector
 - [] Planning to incorporate a read-made AJAX call for the form submission.
 - [] I'm up for suggestions! Create an issue on the repo.
 
