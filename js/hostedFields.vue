@@ -5,6 +5,8 @@
       <button class="card" @click="paymentMethod = 'card'">Pay with Card</button>
     </div>
 
+    <div v-if="errorMessage">{{ this.errorMessage }}</div>
+
     <div v-show="this.paymentMethod == 'card'">
       <h2>About Me</h2>
       <div class="line">
@@ -46,7 +48,6 @@
       </div>
 
       <h2>Payment Information</h2>
-      <div v-if="errorMessage">{{ this.errorMessage }}</div>
 
       <template v-if="showPaymentFields">
         <label for="card-number">Card Number

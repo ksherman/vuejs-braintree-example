@@ -1,14 +1,21 @@
 <template>
   <div class="constrain">
-    <form id="checkout" method="post" action="/checkout">
-      <h2>Drop-in UI</h2>
-      <div id="payment-form"></div>
+    <h2>Drop-in UI [<a href="https://github.com/braintree/braintree-web-drop-in" target="_blank">beta</a>]</h2>
+    
+    <div v-if="errorMessage">{{ this.errorMessage }}</div>
 
-      <label>How many monies?</label>
-      <input type="text" name="checkoutValue" class="hosted-field" placeholder="$10">
+    <div id="dropin-container"></div>
 
-      <button class="" type="submit" value="SEND THE MONIES" style="padding-top: 1rem;">SEND THE MONIES</button>
-    </form>
+
+    <div class="line">
+      <label>How much monies?
+        <input type="text" name="checkoutValue" class="input-field" placeholder="$10" v-model="$parent.txn.payment.amount">
+      </label>
+
+      <button type="submit" style="padding-top: 1rem;" disabled id="submitTransaction" @click="dropinSubmit">MONEY!</button>
+
+    </div>
+
   </div>
 </template>
 
@@ -22,17 +29,52 @@ export default {
   },
   data () {
     return {
-      clientToken: this.token
+      clientToken: this.token,
+      errorMessage: '',
+      dropinInstance: '',
+      dropinPayload: ''
     }
   },
   methods: {
     btDropin() {
-      var braintree2 = require('../js/bt-web-v2/braintree-2.30.0.min.js');
-      console.log('Braintree Drop-in UI using v2');
-      braintree2.setup(this.clientToken, 'dropin', {
-        container: 'payment-form'
+      var dropin = require('../drop-in/dist/web/dropin/1.0.0-beta.4/js/dropin.min.js');
+      console.log('Braintree Drop-in Web Beta');
+      dropin.create({
+        authorization: this.clientToken,
+        selector: '#dropin-container',
+        paypal: {
+          flow: 'vault',
+          amount: this.$parent.txn.payment.amount,
+          currency: 'USD'
+        }
+      }, (dropinErr, dropinInstance) => {
+        if (dropinErr) {
+          this.errorMessage = 'There was an error setting up the Drop-in! Message: ' + dropinErr.message;
+          return;
+
+        } else {
+          document.querySelector('#submitTransaction').removeAttribute('disabled');
+          this.dropinInstance = dropinInstance;
+        }
+      })
+    },
+    dropinSubmit() {
+      this.dropinInstance.requestPaymentMethod( (dropinPayloadErr, dropinPayload) => {
+        if (dropinPayloadErr) {
+          this.errorMessage = 'There was an error with Drop-In Payload! Message: ' + dropinPayloadErr.message;
+          return;
+        } else {
+          this.dropinPayload = dropinPayload;
+          if (dropinPayload.type.includes('PayPal')) {
+            this.$parent.txn.payment.paypal = dropinPayload;
+          } else {
+            this.$parent.txn.payment.paypal = '';
+          }
+          this.$parent.txn.payment.paymentMethodNonce = dropinPayload.nonce;
+        }
       });
     }
+
   }
 }
 </script>

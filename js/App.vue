@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>VueJS Braintree Integration</h1>
-    <button @click="integration = 'dropin'">Drop-In JSv2</button>
+    <button @click="integration = 'dropin'">Drop-In [Beta]</button>
     <button @click="integration = 'hostedfields'">Hosted Fields JSv3</button>
     
     <drop-in v-if="integration == 'dropin'" :token="clientToken"></drop-in>
