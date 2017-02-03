@@ -11,7 +11,7 @@ Currently, I have:
 
 **NOTE:** This does _not_ include the [server-side component](https://developers.braintreepayments.com/start/hello-server/), which is need to a) obtaining a Client Token and b) make API requests. You will need to supply your own server-side integration. I recommend [Node](https://developers.braintreepayments.com/start/hello-server/node) or [PHP](https://developers.braintreepayments.com/start/hello-server/php), depending what you like!
 
-![Example](http://www.giphy.com/gifs/26gsaQyL6pvcr857a)
+![Example](http://i.giphy.com/26gsaQyL6pvcr857a.gif)
 
 ### To Do:
 - [x] Re-write more of the braintree.setup() code to be more Vue-comonent-like.
