@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     btDropin() {
-      var dropin = require('../drop-in/dist/web/dropin/1.0.0-beta.4/js/dropin.min.js');
+      var dropin = require('../braintree-web-drop-in/dist/web/dropin/1.0.0-beta.4/js/dropin.min.js');
       console.log('Braintree Drop-in Web Beta');
       dropin.create({
         authorization: this.clientToken,

@@ -49,7 +49,7 @@
 
       <h2>Payment Information</h2>
 
-      <template v-if="showPaymentFields">
+      <div v-show="showPaymentFields">
         <label for="card-number">Card Number
           <div class="input-field" id="number"></div>
         </label>
@@ -65,11 +65,11 @@
         </div>
 
         <button type="submit" style="padding-top: 1rem;" disabled id="submitTransaction" @click="tokenizeHF">TOKENIZE</button>
-      </template>
-      <template v-else>
+      </div>
+      <!--<template v-else>
         <label for="nonce">Nonce</label>
         <div class="input-field">{{ $parent.txn.payment.paymentMethodNonce }}</div>
-      </template>
+      </template>-->
 
     </div>
 
@@ -96,12 +96,9 @@ export default {
       tokenizePayload: '',
       hostedFieldsInstance: '',
       paypalInstance: '',
-      showPaymentFields: 'true',
+      showPaymentFields: true,
       paymentMethod: ''
     }
-  },
-  ready() {
-    this.createBT();
   },
   methods: {
     formHandler(action, route) {
@@ -159,8 +156,9 @@ export default {
           return;
         } else {
           //enable submit button
+          console.log('HF ready!');
           document.querySelector('#submitTransaction').removeAttribute('disabled');
-          this.hostedFieldsInstance = hostedFieldsInstance;
+          //this.hostedFieldsInstance = hostedFieldsInstance;
         }
 
       });
